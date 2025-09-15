@@ -20,6 +20,7 @@ To use `RandomPasswordCreator` from any terminal window:
 
 1. Locate the file `create_password.bat`
 2. Add its folder path to the **Windows "Path" system environment variable**
+3. Replace `<path_to_RandomPasswordCreator.py>` in `create_passoword.bat` with the path to the `RandomPasswordCreator.py` module
 
 > [Here’s how to add to the system PATH](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/)
 
