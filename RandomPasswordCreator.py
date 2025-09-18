@@ -9,16 +9,25 @@ class CustomHelpFormatter(argparse.RawDescriptionHelpFormatter):
     def add_arguments(self, actions):
         pass
 
-def get_available_chars(omit_chars):
+def get_available_chars(omit_chars=None, include_chars=None):
 
-    all_chars = string.ascii_letters + string.digits + string.punctuation
-    available_chars = ''.join(c for c in all_chars if c not in omit_chars)
+    available_chars = string.ascii_letters + string.digits + string.punctuation
+
+    print(f"include_chars: {include_chars}")
+    print(f"omit_chars: {omit_chars}")
+
+    if omit_chars:
+        chars = ''.join(c for c in available_chars if c not in omit_chars)
+        available_chars = chars
+    elif include_chars:
+        chars = ''.join(c for c in available_chars if c in include_chars)
+        available_chars = chars
 
     return available_chars
 
-def generate_password(length, omit_chars):
+def generate_password(length, omit_chars=None, include_chars=None):
 
-    available_chars = get_available_chars(omit_chars)
+    available_chars = get_available_chars(omit_chars, include_chars)
     
     if not available_chars:
         raise ValueError("No characters available after omitting specified characters.")
@@ -29,7 +38,7 @@ def generate_password(length, omit_chars):
 
         if len(available_chars) < 1:
             
-            available_chars = get_available_chars(omit_chars)
+            available_chars = get_available_chars(omit_chars, include_chars)
         
         random_char = random.choice(available_chars)
         password += random_char
@@ -58,6 +67,9 @@ def main():
         formatter_class=CustomHelpFormatter,
         add_help=True
     )
+
+    group = parser.add_mutually_exclusive_group()
+
     parser.add_argument(
         "-l",
         "--password_length",
@@ -66,9 +78,17 @@ def main():
         default=12,
         help="Length of the password (default: 12)"
     )
-    parser.add_argument(
+    group.add_argument(
         "-o",
         "--characters_to_omit",
+        type=str,
+        nargs="?",
+        default="",
+        help="Characters to exclude from the password (default: none)"
+    )
+    group.add_argument(
+        "-i",
+        "--characters_to_include",
         type=str,
         nargs="?",
         default="",
@@ -86,7 +106,7 @@ def main():
     args = parser.parse_args()
     
     try:
-        passwords = [generate_password(args.password_length, args.characters_to_omit) for _ in range(args.password_number)]
+        passwords = [generate_password(args.password_length, args.characters_to_omit, args.characters_to_include) for _ in range(args.password_number)]
 
         print(f"\n")
 
