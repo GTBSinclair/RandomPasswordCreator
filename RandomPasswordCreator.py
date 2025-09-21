@@ -13,13 +13,10 @@ def get_available_chars(omit_chars=None, include_chars=None):
 
     available_chars = string.ascii_letters + string.digits + string.punctuation
 
-    print(f"include_chars: {include_chars}")
-    print(f"omit_chars: {omit_chars}")
-
     if omit_chars:
         chars = ''.join(c for c in available_chars if c not in omit_chars)
         available_chars = chars
-    elif include_chars:
+    if include_chars:
         chars = ''.join(c for c in available_chars if c in include_chars)
         available_chars = chars
 
