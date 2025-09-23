@@ -71,14 +71,17 @@ or
 create_password -n 4 -l 18 -i $#?
 ```
 
+---
+
+
 ## Changelog
 
-[DEV]
+### [DEV]
 
-[0000.002] Added the -i argument [2025/09/23]
+[0000.002] Added the -i argument [2025/09/23]\
 [0000.001] First version [2025/09/15]
 
-[MAIN]
+### [MAIN]
 
-[0000.002] Added the -i argument [2025/09/23]
+[0000.002] Added the -i argument [2025/09/23]\
 [0000.001] First version [2025/09/15]
