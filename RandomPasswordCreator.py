@@ -2,7 +2,7 @@ import argparse
 import random
 import string
 
-# Class to create a custom help message (i.e. The output of >> password -h)
+# Class to create a custom help message (i.e. The output of >> create_password -h)
 class CustomHelpFormatter(argparse.RawDescriptionHelpFormatter):
     def add_usage(self, usage, actions, groups, prefix=None):
         pass
@@ -56,7 +56,12 @@ def main():
     ">> password -n 4 -l 15 -o *+^\n\n"
     f"Will return something like: \n\n{passwords_str_example}\n\n"
     "The default command is:\n"
-    ">> password -n 1 -l 12 (prints 1 password of length 12)\n "
+    ">> password -n 1 -l 12 (prints 1 password of length 12)\n\n "
+    "The arguments are:\n "
+    "-l (or --password_length): sets the password length\n "
+    "-o (or --characters_to_omit): sets the characters to omit (cannot be used with the -i argument)\n "
+    "-i (or --characters_to_include): sets the character to include (cannot be used with the -o argument)\n "
+    "-n (or --password_number): sets how many passwords to return\n "
 )
 
     parser = argparse.ArgumentParser(

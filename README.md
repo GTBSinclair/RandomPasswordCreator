@@ -1,6 +1,6 @@
 # RandomPasswordCreator
 
-A command-line tool to generate random and secure passwords
+A simple command-line tool to generate random and secure passwords using the Python Standard Library
 
 ---
 
@@ -22,7 +22,7 @@ To use `RandomPasswordCreator` from any terminal window:
 2. Add its folder path to the **Windows "Path" system environment variable**
 3. Replace `<path_to_RandomPasswordCreator.py>` in `create_passoword.bat` with the path to the `RandomPasswordCreator.py` module
 
-> [Here’s how to add to the system PATH](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/)
+> [Tutorial on how to add variables to the system PATH in Windows](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/)
 
 ---
 
@@ -32,39 +32,53 @@ To use `RandomPasswordCreator` from any terminal window:
 
 - `-n`: controls how many passwords to return  
 - `-l`: controls the length of the passwords  
-- `-o`: control the characters to omit from the passwords
+- `-o`: controls the characters to omit from the passwords
+- `-i`: controls the characters to include in the passwords
+
+N.B. The `-o` argument cannot be passed together with the `-i` argument, they can only be used separately.
 
 Default command:
-```bash
+```
 create_password
 ```
 -n argument usage:
 
-```bash
+```
 create_password -n 5
 ```
 -l argument usage:
 
-```bash
+```
 create_password -l 20
 ```
 -o argument usage:
 
-```bash
+```
 create_password -o *+^
+```
+-i argument usage:
+
+```
+create_password -i @"£
 ```
 using all arguments:
 
-```bash
+```
 create_password -n 4 -l 18 -o %{°
+```
+or
+```
+create_password -n 4 -l 18 -i $#?
 ```
 
 ## Changelog
 
 [DEV]
 
+[0000.002] Added the -i argument [2025/09/23]
 [0000.001] First version [2025/09/15]
 
 [MAIN]
 
+[0000.002] Added the -i argument [2025/09/23]
 [0000.001] First version [2025/09/15]
