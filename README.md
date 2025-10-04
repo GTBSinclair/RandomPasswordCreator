@@ -34,6 +34,7 @@ To use `RandomPasswordCreator` from any terminal window:
 - `-l`: controls the length of the passwords  
 - `-o`: controls the characters to omit from the passwords
 - `-i`: controls the characters to include in the passwords
+- `-j`: outputs passwords only made up of letters and numbers
 
 N.B. The `-o` argument cannot be passed together with the `-i` argument, they can only be used separately.
 
@@ -61,14 +62,19 @@ create_password -o *+^
 ```
 create_password -i @"£
 ```
+-j argument usage:
+
+```
+create_password -j
+```
 using all arguments:
 
 ```
-create_password -n 4 -l 18 -o %{°
+create_password -n 4 -l 18 -o %{° -j
 ```
 or
 ```
-create_password -n 4 -l 18 -i $#?
+create_password -n 4 -l 18 -i $#? -j
 ```
 
 ---
@@ -78,10 +84,12 @@ create_password -n 4 -l 18 -i $#?
 
 ### [DEV]
 
-[0000.002] Added the -i argument [2025/09/23]\
+[0000.003] Added the -j argument [2025/10/04]
+[0000.002] Added the -i argument [2025/09/23]
 [0000.001] First version [2025/09/15]
 
 ### [MAIN]
 
-[0000.002] Added the -i argument [2025/09/23]\
+[0000.003] Added the -j argument [2025/10/04]
+[0000.002] Added the -i argument [2025/09/23]
 [0000.001] First version [2025/09/15]
