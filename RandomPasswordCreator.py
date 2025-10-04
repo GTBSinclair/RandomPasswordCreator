@@ -65,7 +65,8 @@ def main():
     "-o (or --characters_to_omit): sets the characters to omit (cannot be used with the -i argument)\n "
     "-i (or --characters_to_include): sets the character to include (cannot be used with the -o argument)\n "
     "-n (or --password_number): sets how many passwords to return\n "
-    "-j (or --just_letters_and_numbers): returns passwords using only letters and numbers\n "
+    "-j (or --just_letters_and_numbers): returns passwords using only letters and numbers\n\n "
+    "See the repository for further info: https://github.com/GTBSinclair/RandomPasswordCreator\n "
 )
 
     parser = argparse.ArgumentParser(

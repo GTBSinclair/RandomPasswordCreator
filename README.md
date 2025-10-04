@@ -84,12 +84,12 @@ create_password -n 4 -l 18 -i $#? -j
 
 ### [DEV]
 
-[0000.003] Added the -j argument [2025/10/04]
-[0000.002] Added the -i argument [2025/09/23]
+[0000.003] Added the -j argument [2025/10/04]\
+[0000.002] Added the -i argument [2025/09/23]\
 [0000.001] First version [2025/09/15]
 
 ### [MAIN]
 
-[0000.003] Added the -j argument [2025/10/04]
-[0000.002] Added the -i argument [2025/09/23]
+[0000.003] Added the -j argument [2025/10/04]\
+[0000.002] Added the -i argument [2025/09/23]\
 [0000.001] First version [2025/09/15]
