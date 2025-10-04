@@ -9,12 +9,12 @@ class CustomHelpFormatter(argparse.RawDescriptionHelpFormatter):
     def add_arguments(self, actions):
         pass
 
-def get_available_chars(omit_chars=None, include_chars=None, just_letters_and_numbers=False):
+def get_available_chars(omit_chars=None, include_chars=None, just_letters_and_numbers=False, add_characters=None):
 
     if just_letters_and_numbers:
-        available_chars = string.ascii_letters + string.digits
+        available_chars = ''.join(dict.fromkeys(string.ascii_letters + string.digits + add_characters))
     else:
-        available_chars = string.ascii_letters + string.digits + string.punctuation
+        available_chars = ''.join(dict.fromkeys(string.ascii_letters + string.digits + string.punctuation + add_characters))
 
     if omit_chars:
         chars = ''.join(c for c in available_chars if c not in omit_chars)
@@ -25,9 +25,9 @@ def get_available_chars(omit_chars=None, include_chars=None, just_letters_and_nu
 
     return available_chars
 
-def generate_password(length, omit_chars=None, include_chars=None, just_letters_and_numbers=False):
+def generate_password(length, omit_chars=None, include_chars=None, just_letters_and_numbers=False, add_characters=None):
 
-    available_chars = get_available_chars(omit_chars, include_chars, just_letters_and_numbers)
+    available_chars = get_available_chars(omit_chars, include_chars, just_letters_and_numbers, add_characters)
     
     if not available_chars:
         raise ValueError("No characters available after omitting specified characters.")
@@ -38,7 +38,7 @@ def generate_password(length, omit_chars=None, include_chars=None, just_letters_
 
         if len(available_chars) < 1:
             
-            available_chars = get_available_chars(omit_chars, include_chars, just_letters_and_numbers)
+            available_chars = get_available_chars(omit_chars, include_chars, just_letters_and_numbers, add_characters)
         
         random_char = random.choice(available_chars)
         password += random_char
@@ -116,11 +116,19 @@ def main():
         default=False,
         help="Create passwords with just letters and numbers (default: False)"
     )
+    group.add_argument(
+        "-a",
+        "--add_characters",
+        type=str,
+        nargs="?",
+        default="",
+        help="Add characters to include in the passwords (default: none)"
+    )
     
     args = parser.parse_args()
     
     try:
-        passwords = [generate_password(args.password_length, args.characters_to_omit, args.characters_to_include, args.just_letters_and_numbers) for _ in range(args.password_number)]
+        passwords = [generate_password(args.password_length, args.characters_to_omit, args.characters_to_include, args.just_letters_and_numbers, args.add_characters) for _ in range(args.password_number)]
 
         print(f"\n")
 
