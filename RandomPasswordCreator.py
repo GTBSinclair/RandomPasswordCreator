@@ -9,9 +9,12 @@ class CustomHelpFormatter(argparse.RawDescriptionHelpFormatter):
     def add_arguments(self, actions):
         pass
 
-def get_available_chars(omit_chars=None, include_chars=None):
+def get_available_chars(omit_chars=None, include_chars=None, just_letters_and_numbers=False):
 
-    available_chars = string.ascii_letters + string.digits + string.punctuation
+    if just_letters_and_numbers:
+        available_chars = string.ascii_letters + string.digits
+    else:
+        available_chars = string.ascii_letters + string.digits + string.punctuation
 
     if omit_chars:
         chars = ''.join(c for c in available_chars if c not in omit_chars)
@@ -22,9 +25,9 @@ def get_available_chars(omit_chars=None, include_chars=None):
 
     return available_chars
 
-def generate_password(length, omit_chars=None, include_chars=None):
+def generate_password(length, omit_chars=None, include_chars=None, just_letters_and_numbers=False):
 
-    available_chars = get_available_chars(omit_chars, include_chars)
+    available_chars = get_available_chars(omit_chars, include_chars, just_letters_and_numbers)
     
     if not available_chars:
         raise ValueError("No characters available after omitting specified characters.")
@@ -35,7 +38,7 @@ def generate_password(length, omit_chars=None, include_chars=None):
 
         if len(available_chars) < 1:
             
-            available_chars = get_available_chars(omit_chars, include_chars)
+            available_chars = get_available_chars(omit_chars, include_chars, just_letters_and_numbers)
         
         random_char = random.choice(available_chars)
         password += random_char
@@ -45,23 +48,24 @@ def generate_password(length, omit_chars=None, include_chars=None):
     return password
 
 def main():
-    passwords_str_example = "\033[1m\033[32m" + "\n".join(["CqmW}$Kaj3P-PCJ", 
-                                                   "b;%Kv(q7%>)M,3h", 
-                                                   "b1i(L]~:F4DDg/d", 
-                                                   "L&|X0VFVZg#e\\HO"]) + "\033[0m"
+    passwords_str_example = "\033[1m\033[32m" + "\n".join(["CqmW}j[P5v3P-PCJ", 
+                                                   "b;%Kv(q7@5>)M,3h", 
+                                                   "b1i(L]4D-;b0Dg/d", 
+                                                   "L&|X0VFwVZg#e\\HO"]) + "\033[0m"
     
     ArgumentParser_desc = (
     " \nGenerates a random password.\n"
     "Here's an example command to print 4 random passwords of length 15 and omit the characters (*+^) in each of them:\n\n"
     ">> password -n 4 -l 15 -o *+^\n\n"
-    f"Will return something like: \n\n{passwords_str_example}\n\n"
+    f"This command will return something like: \n\n{passwords_str_example}\n\n"
     "The default command is:\n"
-    ">> password -n 1 -l 12 (prints 1 password of length 12)\n\n "
+    ">> password -n 1 -l 16 (prints 1 password of length 16)\n\n "
     "The arguments are:\n "
     "-l (or --password_length): sets the password length\n "
     "-o (or --characters_to_omit): sets the characters to omit (cannot be used with the -i argument)\n "
     "-i (or --characters_to_include): sets the character to include (cannot be used with the -o argument)\n "
     "-n (or --password_number): sets how many passwords to return\n "
+    "-j (or --just_letters_and_numbers): returns passwords using only letters and numbers\n "
 )
 
     parser = argparse.ArgumentParser(
@@ -77,8 +81,8 @@ def main():
         "--password_length",
         type=int,
         nargs="?",
-        default=12,
-        help="Length of the password (default: 12)"
+        default=16,
+        help="Length of the password (default: 16)"
     )
     group.add_argument(
         "-o",
@@ -104,11 +108,18 @@ def main():
         default=1,
         help="Number of passwords to show (default: 1)"
     )
+    parser.add_argument(
+        "-j",
+        "--just_letters_and_numbers",
+        action="store_true",
+        default=False,
+        help="Create passwords with just letters and numbers (default: False)"
+    )
     
     args = parser.parse_args()
     
     try:
-        passwords = [generate_password(args.password_length, args.characters_to_omit, args.characters_to_include) for _ in range(args.password_number)]
+        passwords = [generate_password(args.password_length, args.characters_to_omit, args.characters_to_include, args.just_letters_and_numbers) for _ in range(args.password_number)]
 
         print(f"\n")
 
