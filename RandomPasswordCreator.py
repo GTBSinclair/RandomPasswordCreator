@@ -69,23 +69,24 @@ def generate_password(length, omit_chars=None, just_letters_and_numbers=False, a
     return password
 
 def main():
-    passwords_str_example = "\033[1m\033[32m" + "\n".join(["CqmW}j[P5v3P-PCJ", 
-                                                   "b;%Kv(q7@5>)M,3h", 
-                                                   "b1i(L]4D-;b0Dg/d", 
-                                                   "L&|X0VFwVZg#e\\HO"]) + "\033[0m"
+    passwords_str_example = "\033[1m\033[32m" + "\n".join(["k=(qs!yEO0)£/%$", 
+                                                   "8()!/$x=£6c%HCI", 
+                                                   "aQ£(!kl%=/)Si8$", 
+                                                   "£/)W!=(4Atm$o%M"]) + "\033[0m"
     
     ArgumentParser_desc = (
     " \nGenerates a random password.\n"
-    "Here's an example command to print 4 random passwords of length 15 and omit the characters (*+^) in each of them:\n\n"
-    ">> password -n 4 -l 15 -o *+^\n\n"
+    "Here's an example command to print 4 random 15-character long passwords omitting these characters: *+^ and using only letters and numbers and adding these characters: !\"£$%/()=: to the pool of characters to choose from: \n\n"
+    ">> create_password -n 4 -l 15 -o *+d -j -a !\"£$%/()=\n\n"
     f"This command will return something like: \n\n{passwords_str_example}\n\n"
     "The default command is:\n"
-    ">> password -n 1 -l 16 (prints 1 password of length 16)\n\n "
+    ">> create_password -n 1 -l 16 (prints 1 password of length 16)\n\n "
     "The arguments are:\n "
     "-l (or --password_length): sets the password length\n "
     "-o (or --characters_to_omit): sets the characters to omit (cannot be used with the -i argument)\n "
-    "-n (or --password_number): sets how many passwords to return\n "
-    "-j (or --just_letters_and_numbers): returns passwords using only letters and numbers\n\n "
+    "-n (or --number_of_passwords): sets how many passwords to return\n "
+    "-j (or --just_letters_and_numbers): returns passwords using only letters and numbers\n "
+    "-a (or --add_characters): adds characters to the pool of characters to choose from to create the passwords\n\n "
     "See the repository for further info: https://github.com/GTBSinclair/RandomPasswordCreator\n "
 )
 
@@ -115,7 +116,7 @@ def main():
     )
     parser.add_argument(
         "-n",
-        "--password_number",
+        "--number_of_passwords",
         type=int,
         nargs="?",
         default=1,
@@ -140,7 +141,7 @@ def main():
     args = parser.parse_args()
     
     try:
-        passwords = [generate_password(args.password_length, args.characters_to_omit, args.just_letters_and_numbers, args.add_characters) for _ in range(args.password_number)]
+        passwords = [generate_password(args.password_length, args.characters_to_omit, args.just_letters_and_numbers, args.add_characters) for _ in range(args.number_of_passwords)]
 
         print(f"\n")
 
