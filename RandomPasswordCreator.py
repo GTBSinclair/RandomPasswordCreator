@@ -48,8 +48,6 @@ def generate_password(length, omit_chars=None, just_letters_and_numbers=False, a
         add_characters = shuffle_string(add_characters)
         i = round(length * 0.5)
         password = add_characters[:i]
-        print(f"password: {password}") # TODO: FIX THE -o and -a arguments operation. They need to work well when passed together. They mustn't create parsing errors and problems
-        print(f"omit_chars: {omit_chars}")
         password = omit(password, omit_chars)
         i = len(password)
 
