@@ -1,2 +1,4 @@
 password.bat
 /.vscode
+/dist
+*.egg*

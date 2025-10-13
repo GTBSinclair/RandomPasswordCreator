@@ -1,21 +1,19 @@
 [build-system]
-requires = ["hatchling"]  # Or use "setuptools" if preferred
-build-backend = "hatchling.build"  # Modern backend; install via pip if needed
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "random-password-creator"
-version = "0000.002"
-authors = [{ name = "Giovanni Tognini Bonelli Sinclair", email = "sinclair.giovanni@gmail.com" }]
+version = "0000.004"
 description = "A simple command-line tool to generate random and secure passwords using the Python Standard Library"
+authors = [{ name = "Giovanni Tognini Bonelli Sinclair", email = "sinclair.giovanni@gmail.com" }]
 readme = "README.md"
-license = { file = "LICENSE" }
-requires-python = ">=3.8"  # Specify supported Python versions
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: Apache License",
-    "Operating System :: OS Independent",
-]
+license = { text = "Apache-2.0" }
+requires-python = ">=3.8"
+
+[project.scripts]
+mycli = "rpc.RandomPasswordCreator:main"
 
 [project.urls]
 Homepage = "https://github.com/GTBSinclair/RandomPasswordCreator"
-Issues = "hthttps://github.com/GTBSinclair/RandomPasswordCreator/issues"
+Issues = "https://github.com/GTBSinclair/RandomPasswordCreator/issues"
