@@ -6,7 +6,9 @@ build-backend = "setuptools.build_meta"
 name = "random-password-creator"
 version = "0000.005"
 description = "A simple command-line tool to generate random and secure passwords using the Python Standard Library"
-authors = [{ name = "Giovanni Tognini Bonelli Sinclair", email = "sinclair.giovanni@gmail.com" }]
+author = "Giovanni Tognini Bonelli Sinclair"
+author_email = "sinclair.giovanni@gmail.com"
+keywords = ["password", "cli", "security", "generator"]
 readme = "README.md"
 license = { text = "Apache-2.0" }
 requires-python = ">=3.8"
