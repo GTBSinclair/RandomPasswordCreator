@@ -80,6 +80,7 @@ password -n 4 -l 15 -o *+d -j -a !\"£$%/()=
 
 ### [DEV]
 
+[0000.006] Updated the main module [2026/01/11]\
 [0000.005] Updated pyproject.toml and the main module [2025/12/28]\
 [0000.004] Added the -a argument and removed the -i argument [2025/10/13]\
 [0000.003] Added the -j argument [2025/10/04]\
@@ -88,6 +89,7 @@ password -n 4 -l 15 -o *+d -j -a !\"£$%/()=
 
 ### [MAIN]
 
+[0000.006] Updated the main module [2026/01/11]\
 [0000.005] Updated pyproject.toml and the main module [2025/12/28]\
 [0000.004] Added the -a argument and removed the -i argument [2025/10/13]\
 [0000.003] Added the -j argument [2025/10/04]\
