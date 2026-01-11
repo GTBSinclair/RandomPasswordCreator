@@ -2,7 +2,7 @@ import argparse
 import random
 import string
 
-# Class to create a custom help message (i.e. The output of >> create_password -h)
+# Class to create a custom help message (i.e. The output of >> password -h)
 class CustomHelpFormatter(argparse.RawDescriptionHelpFormatter):
     def add_usage(self, usage, actions, groups, prefix=None):
         pass
@@ -75,10 +75,10 @@ def main():
     ArgumentParser_desc = (
     " \nGenerates a random password.\n"
     "Here's an example command to print 4 random 15-character long passwords omitting these characters: *+^ and using only letters and numbers and adding these characters: !\"£$%/()=: to the pool of characters to choose from: \n\n"
-    ">> create_password -n 4 -l 15 -o *+d -j -a !\"£$%/()=\n\n"
+    ">> password -n 4 -l 15 -o *+d -j -a !\"£$%/()=\n\n"
     f"This command will return something like: \n\n{passwords_str_example}\n\n"
     "The default command is:\n"
-    ">> create_password -n 1 -l 16 (prints 1 password of length 16)\n\n "
+    ">> password -n 1 -l 16 (prints 1 password of length 16)\n\n "
     "The arguments are:\n "
     "-l (or --password_length): sets the password length\n "
     "-o (or --characters_to_omit): sets the characters to omit (cannot be used with the -i argument)\n "
