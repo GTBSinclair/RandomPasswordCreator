@@ -18,10 +18,8 @@ A simple command-line tool to generate random and secure passwords using the Pyt
 
 To use `RandomPasswordCreator` from any terminal window:
 
-1. Locate the file `create_password.bat`
-2. Add its folder path to the **Windows "Path" system environment variable**
-3. Replace `<path_to_RandomPasswordCreator.py>` in `create_passoword.bat` with the path to the `RandomPasswordCreator.py` module
-4. Open a command prompt and type `create_password`. It should print a random password
+1. Run `pip install random-password-creator` to install random-password-creator
+2. Open a command prompt and type `password`. It should print a random password
 
 ---
 
@@ -38,41 +36,41 @@ To use `RandomPasswordCreator` from any terminal window:
 Help message:
 
 ```
-create_password -h
+password -h
 ```
 Default command:
 ```
-create_password
+password
 ```
 -n argument usage:
 
 ```
-create_password -n 5
+password -n 5
 ```
 -l argument usage:
 
 ```
-create_password -l 20
+password -l 20
 ```
 -o argument usage:
 
 ```
-create_password -o *+d
+password -o *+d
 ```
 -j argument usage:
 
 ```
-create_password -j
+password -j
 ```
 -a argument usage:
 
 ```
-create_password -a !"£$%/()=?
+password -a !"£$%/()=?
 ```
 using all arguments:
 
 ```
-create_password -n 4 -l 15 -o *+d -j -a !\"£$%/()=
+password -n 4 -l 15 -o *+d -j -a !\"£$%/()=
 ```
 
 ---
